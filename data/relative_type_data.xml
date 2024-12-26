@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Creating 'Driving License' relative type-->
+        <record id="relative_type_01" model="sd_hr_relatives.relative_type">
+            <field name="name">Spouse</field>
+        </record>
+        <!-- Creating 'Passport' relative type-->
+        <record id="relative_type_02" model="sd_hr_relatives.relative_type">
+            <field name="name">Daughter</field>
+        </record>
+        <!-- Creating 'ID Card' relative type-->
+        <record id="relative_type_03" model="sd_hr_relatives.relative_type">
+            <field name="name">Son</field>
+        </record>
+        <!-- Creating 'ID Card' relative type-->
+        <record id="relative_type_04" model="sd_hr_relatives.relative_type">
+            <field name="name">Mother</field>
+        </record>
+        <!-- Creating 'ID Card' relative type-->
+        <record id="relative_type_05" model="sd_hr_relatives.relative_type">
+            <field name="name">Father</field>
+        </record>
+        <!-- Creating 'ID Card' relative type-->
+        <record id="relative_type_06" model="sd_hr_relatives.relative_type">
+            <field name="name">Others</field>
+        </record>
+
+    </data>
+</odoo>
