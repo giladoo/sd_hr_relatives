@@ -25,6 +25,9 @@ class SdHrRelativesMembers(models.Model):
     under_sponsorship = fields.Boolean(required=True, default=True)
     mobile_no = fields.Char()
     age = fields.Char(compute='_age_calculation', stare=True)
+    document_ids = fields.One2many('sd_hr_documents.attachments',
+                                   'relative_id',
+                                   string="Documents")
 
     @api.depends('birth_date', 'death_date')
     def _age_calculation(self):
@@ -82,7 +85,27 @@ class SdHrRelativesMembers(models.Model):
         self.id_card_validation = _('Valid') if res else _('Not Valid')
         self.id_card_is_valid = res
 
+    document_count = fields.Integer(compute='_compute_document_count',
+                                    string='documents',
+                                    help='Count of documents.')
 
+    def _compute_document_count(self):
+        for rec in self:
+            rec.document_count = len(rec.document_ids)
+
+
+    def action_document_view(self):
+        self.ensure_one()
+        # return {}
+        return {
+            'name': _('Documents'),
+            'domain': [('employee_id', '=', self.employee_id.id),('relative_id', '=', self.id)],
+            'res_model': 'sd_hr_documents.attachments',
+            'type': 'ir.actions.act_window',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'context': "{'employee_id': %s, 'relative_id': %s}" % (self.employee_id.id, self.id)
+        }
 class SdHrRelativesTypes(models.Model):
     _name = 'sd_hr_relatives.relative_type'
     _description = 'Relative Type'

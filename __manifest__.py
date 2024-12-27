@@ -16,6 +16,7 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/hr_employee_views.xml',
+        'views/sd_hr_documents_views.xml',
         'data/relative_type_data.xml',
     ],
     'demo': [

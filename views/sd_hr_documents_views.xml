@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--   Adding relative details as smart button in employee.-->
-    <record id="view_employee_form" model="ir.ui.view">
-        <field name="name">hr.employee.view.form.inherit.oh.employee.relatives.expiry</field>
-        <field name="model">sd_hr_documents.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_form"/>
+
+    <record id="document_attachments_view_form_inherit_relatives" model="ir.ui.view">
+        <field name="name">sd_hr_documents.attachments.view.form</field>
+        <field name="model">sd_hr_documents.attachments</field>
+        <field name="inherit_id" ref="sd_hr_documents.document_attachments_view_form"/>
         <field name="arch" type="xml">
-            <div class="oe_button_box" position="inside">
-                <button class="oe_stat_button" name="action_relative_view" groups="hr.group_hr_manager"
-                        type="object" icon="fa-list-ol">
-                    <field string="Relatives" name="relative_count" widget="statinfo"/>
-                </button>
-            </div>
+            <xpath expr="//div[hasclass('employee_id')]" position="after">
+                <div class="h3 mb-5 ms-5 relative_id border" invisible="id != False and relative_id == False">
+                    <field name="relative_id" string="Relative"
+                           class="ms-5 border border-info"
+                           readonly="id != False"
+                           context="{'employee_id': employee_id}"
+                           domain="[('employee_id', '=', employee_id)]"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="document_attachments_view_tree_inherit_relatives" model="ir.ui.view">
+        <field name="name">sd_hr_documents.attachments.view.tree</field>
+        <field name="model">sd_hr_documents.attachments</field>
+        <field name="inherit_id" ref="sd_hr_documents.document_attachments_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                    <field string="Relative" name="relative_id" />
+            </xpath>
         </field>
     </record>
 
