@@ -91,7 +91,7 @@ class SdHrRelativesMembers(models.Model):
                                     help='Count of documents.')
 
     def _compute_document_count(self):
-        model_id = self.env['ir.model'].search([('model', '=', self._name)]).id
+        model_id = self.env['ir.model'].sudo().search([('model', '=', self._name)]).id
         attachment_model = self.env['sd_hr_documents.attachments']
         for rec in self:
             # rec.document_count = len(rec.document_ids)
@@ -102,9 +102,9 @@ class SdHrRelativesMembers(models.Model):
 
     # @api.model
     def open_document_attachments_action(self):
-        model_id = self.env['ir.model'].search([('model', '=', self._name)]).id
+        model_id = self.env['ir.model'].sudo().search([('model', '=', self._name)]).id
 
-        action = self.env.ref('sd_hr_documents.document_attachments_action').read()[0]
+        action = self.env.ref('sd_hr_documents.document_attachments_action').sudo().read()[0]
         action['domain'] = [('employee_id', '=', self.employee_id.id),
                             ('related_model', '=', model_id ),
                             ('related_res_id', '=', self.id),
@@ -123,7 +123,7 @@ class SdHrRelativesMembers(models.Model):
         self.ensure_one()
         context = dict(self.env.context)
         context['employee_id'] = self.employee_id.id
-        model_id = self.env['ir.model'].search([('model', '=', 'sd_hr_relatives.members')]).id
+        model_id = self.env['ir.model'].sudo().search([('model', '=', 'sd_hr_relatives.members')]).id
         # context['related_model'] = model_id
         # context['related_res_id'] = self.id
         # context['related_res_name'] = self.name

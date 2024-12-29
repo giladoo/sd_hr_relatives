@@ -13,8 +13,8 @@
                             HR Relatives Form
                         </div>
                     </div>
-                    <div class="oe_button_box" name="button_box" groups="base.group_user">
-                        <button class="oe_stat_button" name="action_document_view" groups="hr.group_hr_manager"
+                    <div class="oe_button_box" name="button_box" >
+                        <button class="oe_stat_button" name="action_document_view"
                                 type="object" icon="fa-list-ol">
                             <field string="Documents" name="document_count" widget="statinfo"/>
                         </button>
