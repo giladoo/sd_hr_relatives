@@ -7,9 +7,9 @@
         <field name="inherit_id" ref="sd_hr_documents.document_attachments_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('employee_id')]" position="after">
-                <div class="h3 mb-5 ms-5 relative_id border" invisible="id != False and relative_id == False">
+                <div class="h3 mb-5 ms-5 relative_id " invisible="id != False and relative_id == False">
                     <field name="relative_id" string="Relative"
-                           class="ms-5 border border-info"
+                           class="ms-5 "
                            readonly="id != False"
                            context="{'employee_id': employee_id}"
                            domain="[('employee_id', '=', employee_id)]"/>

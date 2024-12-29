@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--    Form view of relative_type model.-->
+
     <record id="relative_members_view_form" model="ir.ui.view">
         <field name="name">relative.members.view.form</field>
         <field name="model">sd_hr_relatives.members</field>
         <field name="arch" type="xml">
             <form string="Relative Name">
                 <sheet>
+
+                    <div class="h3 text-end mb-4 ">
+                        <div class="pb-2 text-500 ">
+                            HR Relatives Form
+                        </div>
+                    </div>
                     <div class="oe_button_box" name="button_box" groups="base.group_user">
                         <button class="oe_stat_button" name="action_document_view" groups="hr.group_hr_manager"
                                 type="object" icon="fa-list-ol">
@@ -20,6 +26,7 @@
 
                         <div class="h3 mb-3">
                             <field name="employee_id" readonly="id != False" options="{'no_open': 0}"
+                            context="{'employee_id': employee_id}"
                                    widget="many2one_avatar_employee"/>
                         </div>
                         <div class=" h1 ms-5">
@@ -74,6 +81,12 @@
                 <field name="marriage_state"/>
                 <field name="under_sponsorship"/>
 
+                            <field name="document_count"/>
+                <button type="object" class="btn btn-primary"  icon="fa-paperclip"
+                        name="open_document_attachments_action">
+                </button>
+
+
             </tree>
         </field>
     </record>
@@ -101,8 +114,6 @@
         </field>
     </record>
 
-
-    <!--    Form view of relative_type model.-->
     <record id="relative_type_view_form" model="ir.ui.view">
         <field name="name">relativerelative_type.view.form</field>
         <field name="model">sd_hr_relatives.relative_type</field>
@@ -116,7 +127,7 @@
             </form>
         </field>
     </record>
-    <!--    Tree view of relative_type model.-->
+
     <record id='relative_type_view_tree' model='ir.ui.view'>
         <field name="name">sd_hr_relatives.relative_type.view.tree</field>
         <field name="model">sd_hr_relatives.relative_type</field>
@@ -127,14 +138,13 @@
         </field>
     </record>
 
-    <!--   Action of relative members model.-->
     <record id="relative_members_action" model="ir.actions.act_window">
         <field name="name">Employee Relative Members</field>
         <field name="res_model">sd_hr_relatives.members</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{'default_employee_id': 1}</field>
     </record>
 
-    <!--   Action of relative members model.-->
     <record id="relative_all_members_action" model="ir.actions.act_window">
         <field name="name">Employee Relative Members</field>
         <field name="res_model">sd_hr_relatives.members</field>
@@ -142,21 +152,18 @@
         <field name="context">{'search_default_employee': 1}</field>
     </record>
 
-    <!--   Action of relative type model.-->
     <record id="relative_type_action" model="ir.actions.act_window">
         <field name="name">Employee Relative Types</field>
         <field name="res_model">sd_hr_relatives.relative_type</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!--   Menu item for members model.-->
     <menuitem id="relative_members_menu"
               name="Relative Members"
               parent="hr.menu_hr_employee_payroll"
               sequence="2"
               action="relative_all_members_action"/>
 
-    <!--   Menu item for relative_type model.-->
     <menuitem id="relative_type_menu"
               name="Relative Types"
               parent="hr.menu_config_employee"

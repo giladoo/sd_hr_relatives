@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import json
 
 class SdHrRelativesMembers(models.Model):
     _name = 'sd_hr_relatives.members'
@@ -25,9 +26,9 @@ class SdHrRelativesMembers(models.Model):
     under_sponsorship = fields.Boolean(required=True, default=True)
     mobile_no = fields.Char()
     age = fields.Char(compute='_age_calculation', stare=True)
-    document_ids = fields.One2many('sd_hr_documents.attachments',
-                                   'relative_id',
-                                   string="Documents")
+    # document_ids = fields.One2many('sd_hr_documents.attachments',
+    #                                'relative_id',
+    #                                string="Documents")
 
     @api.depends('birth_date', 'death_date')
     def _age_calculation(self):
@@ -90,22 +91,81 @@ class SdHrRelativesMembers(models.Model):
                                     help='Count of documents.')
 
     def _compute_document_count(self):
+        model_id = self.env['ir.model'].search([('model', '=', self._name)]).id
+        attachment_model = self.env['sd_hr_documents.attachments']
         for rec in self:
-            rec.document_count = len(rec.document_ids)
+            # rec.document_count = len(rec.document_ids)
 
+            domain = [('related_model', '=', model_id), ('related_res_id', '=', rec.id)]
+            rec.document_count = attachment_model.search_count(domain)
+
+
+    # @api.model
+    def open_document_attachments_action(self):
+        model_id = self.env['ir.model'].search([('model', '=', self._name)]).id
+
+        action = self.env.ref('sd_hr_documents.document_attachments_action').read()[0]
+        action['domain'] = [('employee_id', '=', self.employee_id.id),
+                            ('related_model', '=', model_id ),
+                            ('related_res_id', '=', self.id),
+                            ]
+        ctx = action.get('context', {})
+        # print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx}  ")
+        # ctx['employee_id'] = self.employee_id.id
+        # ctx['related_model'] = model_id
+        # ctx['related_res_id'] = self.id
+        # ctx['related_res_name'] = self.name
+        action['context'] = ctx
+
+        return action
 
     def action_document_view(self):
         self.ensure_one()
-        # return {}
+        context = dict(self.env.context)
+        context['employee_id'] = self.employee_id.id
+        model_id = self.env['ir.model'].search([('model', '=', 'sd_hr_relatives.members')]).id
+        # context['related_model'] = model_id
+        # context['related_res_id'] = self.id
+        # context['related_res_name'] = self.name
+        domain = [('employee_id', '=', self.employee_id.id),
+                  ('related_model', '=', model_id),
+                  ('related_res_id', '=', self.id)]
+        print(f"\n %%%%%%%%%%%%%%%%%%% model_id: {model_id} action_document_view:\n context:{context} ")
         return {
             'name': _('Documents'),
-            'domain': [('employee_id', '=', self.employee_id.id),('relative_id', '=', self.id)],
+            'domain': domain,
             'res_model': 'sd_hr_documents.attachments',
             'type': 'ir.actions.act_window',
             'view_id': False,
             'view_mode': 'tree,form',
-            'context': "{'employee_id': %s, 'relative_id': %s}" % (self.employee_id.id, self.id)
+            'context': context
         }
+
+    def unlink(self):
+        print(f"\n\n UNLINK \n\n")
+
+        return super().unlink()
+
+    @api.model
+    def default_get(self, fields_list):
+        defaults = super(SdHrRelativesMembers, self).default_get(fields_list)
+        context = dict(self.env.context)
+        print(f"\n >>>>>>> \n {fields_list} \n\n {defaults} \n\n {context}\n {super(SdHrRelativesMembers, self)}\n" )
+        # if self.env.context.get('copy_from_previous'):
+        #     last_record_id = self.env.context.get('last_record_id')
+        #     if last_record_id:
+        #         last_record = self.browse(last_record_id)
+        #         # Copy specific fields
+        #         defaults.update({
+        #             'name': last_record.name,
+        #             'description': last_record.description,
+        #         })
+        return defaults
+
+
+
+
+
 class SdHrRelativesTypes(models.Model):
     _name = 'sd_hr_relatives.relative_type'
     _description = 'Relative Type'

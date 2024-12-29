@@ -1,0 +1,451 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sd_hr_relatives
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-28 17:27+0000\n"
+"PO-Revision-Date: 2024-12-28 21:05+0330\n"
+"Last-Translator: Arash Homayounfar <homayounfar@msn.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Language: fa_IR\n"
+"X-Generator: Poedit 2.2\n"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__age
+msgid "Age"
+msgstr "سن"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_attachment_count
+msgid "Attachment Count"
+msgstr "تعداد مستندات\v"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__birth_certificate_no
+msgid "Birth Certificate No"
+msgstr "شماره شناسنامه"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__birth_date
+msgid "Birth Date"
+msgstr "تاریخ تولد"
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#, python-format
+msgid "Birth date cannot be grater than today."
+msgstr "تاریخ تولد نمی تواند بعد از امروز باشد"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__document_count
+msgid "Count of documents."
+msgstr "تعداد مستندات"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_hr_employee__relative_count
+msgid "Count of relatives."
+msgstr "تعداد بستگان"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__create_uid
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__create_uid
+msgid "Created by"
+msgstr "ایجاد شده توسط\v"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__create_date
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__create_date
+msgid "Created on"
+msgstr "ایجاد شده در"
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_02
+msgid "Daughter"
+msgstr "دختر"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__death_date
+msgid "Death Date"
+msgstr "تاریخ فوت"
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#, python-format
+msgid "Death date is not correct."
+msgstr "تاریخ فوت درست نیست"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__display_name
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_members_view_form
+#, python-format
+msgid "Documents"
+msgstr "مستندات"
+
+#. module: sd_hr_relatives
+#: model:ir.model,name:sd_hr_relatives.model_hr_employee
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__employee_id
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_members_view_search
+msgid "Employee"
+msgstr "کارمند"
+
+#. module: sd_hr_relatives
+#: model:ir.actions.act_window,name:sd_hr_relatives.relative_all_members_action
+#: model:ir.actions.act_window,name:sd_hr_relatives.relative_members_action
+msgid "Employee Relative Members"
+msgstr "اعضاء بستگان کارمند"
+
+#. module: sd_hr_relatives
+#: model:ir.actions.act_window,name:sd_hr_relatives.relative_type_action
+msgid "Employee Relative Types"
+msgstr "نوع بستگان کارمند"
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_05
+msgid "Father"
+msgstr "پدر"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_members_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_members_view_form
+msgid "HR Relatives Form"
+msgstr "فرم بستگان منابع انسانی"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__id
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__id
+msgid "ID"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__id_card
+msgid "Id Card"
+msgstr "کارت ملی"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__id_card_is_valid
+msgid "Id Card Is Valid"
+msgstr "کارت ملی درست نیست"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__id_card_validation
+msgid "Id Card Validation"
+msgstr "صحت سنجی کارت ملی"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__message_has_error
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__write_uid
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__write_date
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__marriage_state
+msgid "Marriage State"
+msgstr "وضعیت تاهل"
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#: model:ir.model.fields.selection,name:sd_hr_relatives.selection__sd_hr_relatives_members__marriage_state__married
+#, python-format
+msgid "Married"
+msgstr "ازدواج کرده"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__mobile_no
+msgid "Mobile No"
+msgstr "شماره موبایل"
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_04
+msgid "Mother"
+msgstr "مادر"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__name
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_relative_type__name
+msgid "Name"
+msgstr "نام"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#, python-format
+msgid "Not Valid"
+msgstr "نادرست"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_06
+msgid "Others"
+msgstr "غیره"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model,name:sd_hr_relatives.model_sd_hr_relatives_members
+#: model:ir.ui.menu,name:sd_hr_relatives.relative_members_menu
+msgid "Relative Members"
+msgstr "اعضاء بستگان"
+
+#. module: sd_hr_relatives
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_members_view_form
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.relative_type_view_form
+msgid "Relative Name"
+msgstr "نام "
+
+#. module: sd_hr_relatives
+#: model:ir.model,name:sd_hr_relatives.model_sd_hr_relatives_relative_type
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__relative_type
+msgid "Relative Type"
+msgstr "نسبت"
+
+#. module: sd_hr_relatives
+#: model:ir.ui.menu,name:sd_hr_relatives.relative_type_menu
+msgid "Relative Types"
+msgstr "انواع نسبت"
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/hr_employee.py:0
+#: code:addons/sd_hr_relatives/models/hr_employee.py:0
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_hr_employee__relative_count
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_hr_employee__relative_ids
+#: model_terms:ir.ui.view,arch_db:sd_hr_relatives.view_employee_form
+#, python-format
+msgid "Relatives"
+msgstr "بستگان"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#: model:ir.model.fields.selection,name:sd_hr_relatives.selection__sd_hr_relatives_members__marriage_state__single
+#, python-format
+msgid "Single"
+msgstr "مجرد"
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_03
+msgid "Son"
+msgstr "پسر"
+
+#. module: sd_hr_relatives
+#: model:sd_hr_relatives.relative_type,name:sd_hr_relatives.relative_type_01
+msgid "Spouse"
+msgstr "همسر"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__under_sponsorship
+msgid "Under Sponsorship"
+msgstr "تحت حمایت"
+
+#. module: sd_hr_relatives
+#. odoo-python
+#: code:addons/custom/addons/sd_hr_relatives/models/models.py:0
+#: code:addons/sd_hr_relatives/models/models.py:0
+#, python-format
+msgid "Valid"
+msgstr "معتبر"
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,help:sd_hr_relatives.field_sd_hr_relatives_members__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: sd_hr_relatives
+#: model:ir.model.fields,field_description:sd_hr_relatives.field_sd_hr_relatives_members__document_count
+msgid "documents"
+msgstr "مستندات"
