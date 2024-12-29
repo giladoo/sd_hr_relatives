@@ -11,7 +11,7 @@
     'installable': True,
     'auto_install': False,
     'application': False,
-    'depends': ['base', 'hr', 'sd_hr', 'sd_hr_documents'],
+    'depends': ['base', 'hr', 'sd_hr_documents'],
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
