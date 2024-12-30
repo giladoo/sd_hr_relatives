@@ -102,31 +102,35 @@ class SdHrRelativesMembers(models.Model):
 
     # @api.model
     def open_document_attachments_action(self):
-        model_id = self.env['ir.model'].sudo().search([('model', '=', self._name)]).id
+        model_id = self.env['ir.model'].sudo().search([('model', '=', self._name)])
 
         action = self.env.ref('sd_hr_documents.document_attachments_action').sudo().read()[0]
-        action['domain'] = [('employee_id', '=', self.employee_id.id),
-                            ('related_model', '=', model_id ),
-                            ('related_res_id', '=', self.id),
-                            ]
-        ctx = action.get('context', {})
-        # print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx}  ")
-        # ctx['employee_id'] = self.employee_id.id
-        # ctx['related_model'] = model_id
-        # ctx['related_res_id'] = self.id
-        # ctx['related_res_name'] = self.name
-        action['context'] = ctx
+        if model_id:
+            action['domain'] = [('employee_id', '=', self.employee_id.id),
+                                ('related_model', '=', model_id ),
+                                ('related_res_id', '=', self.id),
+                                ]
+            ctx = action.get('context', '{}')
+            ctx_1 = ctx.replace("'", '"')
+            print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx} \n self.employee_id: {ctx_1} ")
+            ctx = json.loads(ctx_1)
+            print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx} \n self.employee_id: {ctx_1} ")
+            ctx['default_employee_id'] = self.employee_id.id if len(self.employee_id) else False
+            ctx['default_related_model'] = model_id
+            ctx['default_related_res_id'] = self.id
+            ctx['default_related_res_name'] = self.name
+            action['context'] = ctx
 
         return action
 
     def action_document_view(self):
         self.ensure_one()
         context = dict(self.env.context)
-        context['employee_id'] = self.employee_id.id
+        context['default_employee_id'] = self.employee_id.id
         model_id = self.env['ir.model'].sudo().search([('model', '=', 'sd_hr_relatives.members')]).id
-        # context['related_model'] = model_id
-        # context['related_res_id'] = self.id
-        # context['related_res_name'] = self.name
+        context['default_related_model'] = model_id
+        context['default_related_res_id'] = self.id
+        context['default_related_res_name'] = self.name
         domain = [('employee_id', '=', self.employee_id.id),
                   ('related_model', '=', model_id),
                   ('related_res_id', '=', self.id)]
