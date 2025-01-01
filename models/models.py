@@ -2,6 +2,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 import json
+import logging
 
 class SdHrRelativesMembers(models.Model):
     _name = 'sd_hr_relatives.members'
@@ -26,9 +27,9 @@ class SdHrRelativesMembers(models.Model):
     under_sponsorship = fields.Boolean(required=True, default=True)
     mobile_no = fields.Char()
     age = fields.Char(compute='_age_calculation', stare=True)
-    # document_ids = fields.One2many('sd_hr_documents.attachments',
-    #                                'relative_id',
-    #                                string="Documents")
+    document_ids = fields.One2many('sd_hr_documents.attachments',
+                                   'relative_id',
+                                   string="Documents")
 
     @api.depends('birth_date', 'death_date')
     def _age_calculation(self):
@@ -94,9 +95,8 @@ class SdHrRelativesMembers(models.Model):
         model_id = self.env['ir.model'].sudo().search([('model', '=', self._name)]).id
         attachment_model = self.env['sd_hr_documents.attachments']
         for rec in self:
-            # rec.document_count = len(rec.document_ids)
-
-            domain = [('related_model', '=', model_id), ('related_res_id', '=', rec.id)]
+            # domain = [('related_model', '=', model_id), ('related_res_id', '=', rec.id)]
+            domain = [('employee_id', '=', rec.employee_id.id),('relative_id', '=', rec.id)]
             rec.document_count = attachment_model.search_count(domain)
 
 
@@ -107,18 +107,13 @@ class SdHrRelativesMembers(models.Model):
         action = self.env.ref('sd_hr_documents.document_attachments_action').sudo().read()[0]
         if model_id:
             action['domain'] = [('employee_id', '=', self.employee_id.id),
-                                ('related_model', '=', model_id ),
-                                ('related_res_id', '=', self.id),
+                                # ('related_model', '=', model_id ),
+                                # ('related_res_id', '=', self.id),
                                 ]
             ctx = action.get('context', '{}')
             ctx_1 = ctx.replace("'", '"')
-            print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx} \n self.employee_id: {ctx_1} ")
             ctx = json.loads(ctx_1)
-            print(f"\n %%%%%%%%%%%%%%%%%%% model_name :\n\n {ctx} \n self.employee_id: {ctx_1} ")
             ctx['default_employee_id'] = self.employee_id.id if len(self.employee_id) else False
-            ctx['default_related_model'] = model_id
-            ctx['default_related_res_id'] = self.id
-            ctx['default_related_res_name'] = self.name
             action['context'] = ctx
 
         return action
@@ -128,12 +123,11 @@ class SdHrRelativesMembers(models.Model):
         context = dict(self.env.context)
         context['default_employee_id'] = self.employee_id.id
         model_id = self.env['ir.model'].sudo().search([('model', '=', 'sd_hr_relatives.members')]).id
-        context['default_related_model'] = model_id
-        context['default_related_res_id'] = self.id
-        context['default_related_res_name'] = self.name
+
         domain = [('employee_id', '=', self.employee_id.id),
-                  ('related_model', '=', model_id),
-                  ('related_res_id', '=', self.id)]
+                  # ('related_model', '=', model_id),
+                  # ('related_res_id', '=', self.id)
+                  ]
         print(f"\n %%%%%%%%%%%%%%%%%%% model_id: {model_id} action_document_view:\n context:{context} ")
         return {
             'name': _('Documents'),
@@ -145,16 +139,14 @@ class SdHrRelativesMembers(models.Model):
             'context': context
         }
 
-    def unlink(self):
-        print(f"\n\n UNLINK \n\n")
 
-        return super().unlink()
+    # @api.model
+    # def default_get(self, fields_list):
+        # defaults = super(SdHrRelativesMembers, self).default_get(fields_list)
+        # context = dict(self.env.context)
 
-    @api.model
-    def default_get(self, fields_list):
-        defaults = super(SdHrRelativesMembers, self).default_get(fields_list)
-        context = dict(self.env.context)
-        print(f"\n >>>>>>> \n {fields_list} \n\n {defaults} \n\n {context}\n {super(SdHrRelativesMembers, self)}\n" )
+        # print(f"\n >>>>>>> \n {fields_list} \n\n {defaults} \n\n {context}\n {super(SdHrRelativesMembers, self)}\n" )
+
         # if self.env.context.get('copy_from_previous'):
         #     last_record_id = self.env.context.get('last_record_id')
         #     if last_record_id:
@@ -164,8 +156,33 @@ class SdHrRelativesMembers(models.Model):
         #             'name': last_record.name,
         #             'description': last_record.description,
         #         })
-        return defaults
+        # return defaults
 
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
+        documents = self.create_documents(res.employee_id.id, res.id)
+        if not documents:
+            logging.error(f"Default documents for new relative failed, res_id: {res.id}")
+        return res
+
+    def create_documents(self, employee_id, res_id):
+        documents_model = self.env['sd_hr_documents.attachments']
+        auto_create = self.env['sd_hr_documents.document_type'].search([('relative_auto_create', '=', True)])
+        try:
+            for rec in auto_create:
+                documents_model.create({
+                    'employee_id': employee_id,
+                    'relative_id': res_id,
+                    'document_type': rec.id,
+                    'name': rec.name,
+                })
+            done = True
+        except Exception as e:
+            done = False
+
+        return done
 
 
 

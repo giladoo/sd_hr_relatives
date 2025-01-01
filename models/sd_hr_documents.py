@@ -17,3 +17,8 @@ class SdHrDocumentsRelatives(models.Model):
         print(f"\n %%%%%%%%%%%>>>>>>>>>>\n context: {context}\n")
         return super().employee_action_document_view()
 
+
+class SdHrDocumentsRelativesDocumentTypes(models.Model):
+    _inherit = 'sd_hr_documents.document_type'
+
+    relative_auto_create = fields.Boolean(default=False)

@@ -12,6 +12,7 @@
                            class="ms-5 "
                            readonly="id != False"
                            context="{'employee_id': employee_id}"
+                           placeholder="Select Relative"
                            domain="[('employee_id', '=', employee_id)]"/>
                 </div>
             </xpath>
@@ -25,6 +26,17 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='employee_id']" position="after">
                     <field string="Relative" name="relative_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="document_types_view_tree_inherit_relatives" model="ir.ui.view">
+        <field name="name">sd_hr_documents.document_type.view.tree</field>
+        <field name="model">sd_hr_documents.document_type</field>
+        <field name="inherit_id" ref="sd_hr_documents.document_type_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='auto_create']" position="after">
+                    <field string="Relative Auto Create" name="relative_auto_create" />
             </xpath>
         </field>
     </record>
