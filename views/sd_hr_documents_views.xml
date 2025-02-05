@@ -20,7 +20,7 @@
     </record>
 
     <record id="document_attachments_view_tree_inherit_relatives" model="ir.ui.view">
-        <field name="name">sd_hr_documents.attachments.view.tree</field>
+        <field name="name">sd_hr_documents.attachments.view.list</field>
         <field name="model">sd_hr_documents.attachments</field>
         <field name="inherit_id" ref="sd_hr_documents.document_attachments_view_tree"/>
         <field name="arch" type="xml">
@@ -31,7 +31,7 @@
     </record>
 
     <record id="document_types_view_tree_inherit_relatives" model="ir.ui.view">
-        <field name="name">sd_hr_documents.document_type.view.tree</field>
+        <field name="name">sd_hr_documents.document_type.view.list</field>
         <field name="model">sd_hr_documents.document_type</field>
         <field name="inherit_id" ref="sd_hr_documents.document_type_view_tree"/>
         <field name="arch" type="xml">

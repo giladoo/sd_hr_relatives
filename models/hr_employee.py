@@ -27,6 +27,6 @@ class SdHrRelativesEmployee(models.Model):
             'res_model': 'sd_hr_relatives.members',
             'type': 'ir.actions.act_window',
             'view_id': False,
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'context': "{'employee_id': %s}" % self.id
         }
